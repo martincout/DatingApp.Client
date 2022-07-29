@@ -8,10 +8,10 @@
     </div>
   </div>
 
-  <div *ngIf="registerMode" class="container d-flex justify-content-center mt-3">
-    <div class="row">
+  <div *ngIf="registerMode" class="container d-flex d-sm-flex justify-content-center mt-3">
+    <div class="row ">
       <div class="col">
-        <p>Register Form goes here</p>
+        <app-register [usersFromHomeComponent]="users"></app-register>
       </div>
     </div>
   </div>

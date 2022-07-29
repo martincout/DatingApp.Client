@@ -1,6 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, ReplaySubject } from 'rxjs';
+import { Register } from '../_models/register';
 import { User } from '../_models/user';
 
 @Injectable({
@@ -23,6 +24,10 @@ export class AccountService {
         }
       })
     );
+  }
+
+  register(model: any){
+    return this.http.post<Register>(this.baseUrl + 'account/login', model)
   }
 
   setCurrentUserSource(user: User){
