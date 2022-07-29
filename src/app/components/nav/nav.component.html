@@ -6,21 +6,23 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent" >
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
-
-          <li class="nav-item" *ngIf="this.accountService.currentUser$ | async">
+          <ng-container *ngIf="this.accountService.currentUser$ | async"
+          >
+          <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/members" routerLinkActive="active" href="#">Matches</a>
           </li>
-          <li class="nav-item" *ngIf="this.accountService.currentUser$ | async">
+          <li class="nav-item" >
             <a class="nav-link" routerLink="/lists" routerLinkActive="active">Lists</a>
           </li>
-          <li class="nav-item" *ngIf="this.accountService.currentUser$ | async">
+          <li class="nav-item" >
             <a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a>
           </li>
+        </ng-container>
 
         </ul>
-        <div class="nav-item dropdown" style="color: white;" dropdown *ngIf="this.accountService.currentUser$ | async">
+        <div class="nav-item dropdown" style="color: white;" dropdown *ngIf="(this.accountService.currentUser$ | async) as user">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" dropdownToggle role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Welcome User
+            Welcome {{user.username | titlecase}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown" *dropdownMenu>
             <li><a class="dropdown-item" href="#">Edit Profile</a></li>
@@ -42,7 +44,7 @@
           class="form-control me-2"
           type="password"
           placeholder="Password">
-        <button class="btn btn-outline-success" type="login">Login</button>
+        <button class="btn btn-success" type="login">Login</button>
       </form>
 
     </div>
